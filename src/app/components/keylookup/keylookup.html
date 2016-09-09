@@ -1,0 +1,63 @@
+<div ng-controller="KeyLookupCtrl">
+  <article>
+    <form>
+      <section>
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+              <label for="typeDropdown">Lookup Values</label>
+              <select ng-model="typeDropdown" ng-change="selectType();mainDropdown=-1" id="typeDropdown" class="form-control">
+                <option ng-repeat="type in lookupTypes track by $index" ng-value="$index">{{type.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section ng-if="selectedType">
+        <header>
+          <h3>{{selectedType.name}}</h3>
+        </header>
+        <div class="form-group">
+          <div class="row">
+            <div ng-repeat="val in selectedVals" class="col-xs-3 value-list">
+              <span class="key" ng-bind-html="val.name.htmlSafe()"></span>
+              <button type="button" class="close" ng-click="deleteSelectedVal(val)" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="col-xs-5">
+              <chord-selector selected-val="valueSelector" on-selected="addSelectedVal(item)" options="selectedType.vals" />
+              <!-- <select ng-model="mainDropdown" ng-change="addSelectedVal(mainDropdown);mainDropdown=-1;" class="form-control">
+                <option ng-repeat="val in selectedType.vals track by $index" ng-hide="selectedVals.indexOf(val) > -1" ng-value="$index" ng-bind-html="val.name.htmlSafe()"></option>
+              </select> -->
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-12 col-sm-4">
+              <button ng-click="lookup()" class="btn btn-primary btn-block">Lookup</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </form>
+
+    <section ng-show="rows.length > 0 || noneFound">
+      <header>
+        <h3>Keys</h3>
+      </header>
+      <div ng-show="rows.length > 0">
+        <div class="row" ng-repeat="row in rows">
+          <div class="col-xs-3" ng-repeat="km in row track by $index">
+            <a ng-href="{{km.link}}">{{km.key.root.name}} {{km.mode.name}}</a>
+          </div>
+        </div>
+      </div>
+      <div class="row" ng-show="noneFound">
+        <div class="col-xs-12">
+          No keys found
+        </div>
+      </div>
+    </section>
+  </article>
+</div>

@@ -1,0 +1,19 @@
+<md-content>
+  <md-autocomplete
+    md-no-cache="true"
+    md-selected-item="$ctrl.selectedItem"
+    md-search-text-change="$ctrl.searchTextChange(ctrl.searchText)"
+    md-search-text="$ctrl.searchText"
+    md-selected-item-change="$ctrl.itemSelected(item)"
+    md-items="item in $ctrl.searchFilter()"
+    md-item-text="item.name"
+    md-min-length="1"
+    placeholder="Enter Value">
+    <md-item-template>
+      <span md-highlight-text="$ctrl.searchText" md-highlight-flags="^i">{{item.name}}</span>
+    </md-item-template>
+    <md-not-found>
+      None were found.
+    </md-not-found>
+  </md-autocomplete>
+</md-content>

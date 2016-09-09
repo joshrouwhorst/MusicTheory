@@ -1,0 +1,58 @@
+<div ng-controller="ModeChartCtrl">
+    <article>
+        <section>
+            <form>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            <label>Key</label>
+                            <select ng-model="selectedKey" ng-change="updateKeyboard()" class="form-control" ng-options="key.root.name for key in keys">
+                                <!-- <option ng-repeat="key in keys track by $index" ng-value="$index">{{key.root.name}}</option> -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            <label>Mode</label>
+                            <select ng-model="selectedMode" ng-change="updateKeyboard()" class="form-control" ng-options="mode.name for mode in modes">
+                                <!-- <option ng-repeat="mode in modes track by $index" ng-value="$index">{{mode.name}}</option> -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section ng-show="selectedMode && selectedKey">
+            <div class="row">
+                <div class="col-xs-12">
+                    <canvas-keyboard />
+                </div>
+            </div>
+        </section>
+
+        <section ng-show="selectedMode && selectedKey">
+            <header>
+                <h3>Notes</h3>
+            </header>
+            <div class="row notes">
+                <div ng-repeat="note in notes" class="col-xs-1">
+                    <a ng-href="{{note.link}}">{{note.name}}</a>
+                </div>
+            </div>
+        </section>
+
+        <section ng-show="selectedMode && selectedKey">
+            <header>
+                <h3>Chords</h3>
+            </header>
+            <div class="row chords">
+                <div ng-repeat="chord in chords" class="col-xs-6">
+                    <a ng-if="chord.link" ng-href="{{chord.link}}" ng-bind-html="chord.formatted.full.htmlSafe()"></a>
+                </div>
+            </div>
+        </section>
+
+        <video-list />
+    </article>
+</div>

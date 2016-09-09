@@ -1,0 +1,35 @@
+<div ng-controller="RandomChordCtrl" class="widget randomkey">
+  <article>
+    <section>
+      <div class="row">
+        <form>
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" ng-model="showQuality"> Quality
+              </label>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" ng-model="showSeventh"> Seventh
+              </label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 text-center chord">
+          <span ng-bind-html="key" class="key"></span> <span ng-show="showQuality" ng-bind-html="quality" class="quality"></span> <sup><span ng-show="showSeventh" ng-bind-html="seventh" class="seventh"></span></sup>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+          <button ng-click="generate()" class="btn btn-primary btn-lg btn-block">Generate</button>
+        </div>
+      </div>
+    </section>
+    <video-list />
+  </article>
+</div>

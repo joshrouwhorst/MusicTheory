@@ -1,0 +1,39 @@
+<div ng-controller="NoteCtrl">
+  <article>
+    <section>
+      <header>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6" ng-show="selectedNote">
+            <h1>{{selectedNote.name}}</h1>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+              <label>Select Note</label>
+              <select class="form-control" ng-model="selectedNote" ng-change="update()" ng-options="note.name for note in notes"></select>
+            </div>
+          </div>
+        </div>
+      </header>
+    </section>
+    <section>
+      <canvas-keyboard />
+    </section>
+    <section ng-show="selectedNote">
+      <header>
+        <h3>Chords &amp; Keys</h3>
+      </header>
+      <div class="panel panel-default spaced-out" ng-repeat="chordObj in chords">
+        <div class="panel-heading">
+          <h4><a ng-href="{{chordObj.chord.link}}" ng-bind-html="chordObj.chord.formatted.full.htmlSafe()"></a></h4>
+        </div>
+        <table class="table table-striped">
+          <tr ng-repeat="row in chordObj.rows">
+            <td ng-repeat="km in row track by $index">
+              <a ng-if="km.link" ng-href="{{km.link}}">{{km.name}}</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </section>
+  </article>
+</div>

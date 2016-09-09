@@ -1,0 +1,51 @@
+<div ng-controller="ChordCtrl">
+  <article>
+    <section>
+      <header>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6" ng-show="showcaseChord">
+            <h1 ng-bind-html="showcaseChord.formatted.full.htmlSafe()"></h1>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+              <label>Select Chord</label>
+              <chord-selector selected-val="valueSelector" on-selected="update()" options="chords" />
+              <!-- <select class="form-control" ng-model="selectedChord" ng-change="update()">
+                <option></option>
+                <option ng-repeat="chord in chords track by $index" ng-value="$index" ng-bind-html="chord.name.htmlSafe()"></option>
+              </select> -->
+            </div>
+          </div>
+        </div>
+      </header>
+    </section>
+    <section>
+      <canvas-keyboard />
+    </section>
+    <section ng-show="showcaseChord" class="notes">
+      <header>
+        <h3>Notes</h3>
+      </header>
+      <div class="row">
+        <div class="col-xs-3" ng-repeat="note in showcaseChord.notes">
+          <a ng-href="{{note.link}}">{{note.name}}</a>
+        </div>
+      </div>
+    </section>
+    <section ng-show="showcaseChord" class="keys">
+      <header>
+        <h3>Keys</h3>
+      </header>
+      <table class="table table-striped">
+        <tr ng-repeat="row in rows">
+          <td ng-repeat="km in row track by $index">
+            <a ng-href="{{km.link}}">{{km.name}}</a>
+          </td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <video-list />
+    </section>
+  </article>
+</div>

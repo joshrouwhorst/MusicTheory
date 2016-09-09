@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="musicTheory">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Theory</title>
+    <!-- inject:vendor:css -->
+    <link type="text/css" rel="stylesheet" href="./angular-material/angular-material.css" />
+    <!-- endinject -->
+    <link rel="stylesheet" href="./assets/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="/assets/bootstrap-theme.min.css"> -->
+    <!-- inject:css -->
+    <link type="text/css" rel="stylesheet" href="./css/app.css" />
+    <link type="text/css" rel="stylesheet" href="./css/components/canvaskeyboard/canvaskeyboard.css" />
+    <link type="text/css" rel="stylesheet" href="./css/components/modechart/modechart.css" />
+    <link type="text/css" rel="stylesheet" href="./css/components/keylookup/keylookup.css" />
+    <link type="text/css" rel="stylesheet" href="./css/components/randomchord/randomchord.css" />
+    <!-- endinject -->
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+          <music-header></music-header>
+          <ng-view></ng-view>
+        </div>
+      </div>
+    </div>
+    <!-- inject:vendor:js -->
+    <script type="text/javascript" src="./angular/angular.js"></script>
+    <script type="text/javascript" src="./angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="./jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="./angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src="./angular-aria/angular-aria.js"></script>
+    <script type="text/javascript" src="./angular-messages/angular-messages.js"></script>
+    <script type="text/javascript" src="./bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="./angular-material/angular-material.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script type="text/javascript" src="./components/videolist/videolist-controller.js"></script>
+    <script type="text/javascript" src="./components/randomchord/randomchord-controller.js"></script>
+    <script type="text/javascript" src="./components/note/note-controller.js"></script>
+    <script type="text/javascript" src="./components/modechart/modechart-controller.js"></script>
+    <script type="text/javascript" src="./components/list/list-controller.js"></script>
+    <script type="text/javascript" src="./components/keylookup/keylookup-controller.js"></script>
+    <script type="text/javascript" src="./components/header/header-controller.js"></script>
+    <script type="text/javascript" src="./components/flashcards/flashcards-controller.js"></script>
+    <script type="text/javascript" src="./components/chordselector/chordselector-controller.js"></script>
+    <script type="text/javascript" src="./components/chord/chord-controller.js"></script>
+    <script type="text/javascript" src="./components/canvaskeyboard/canvaskeyboard-controller.js"></script>
+    <script type="text/javascript" src="./services/widget-service.js"></script>
+    <script type="text/javascript" src="./services/key-service.js"></script>
+    <script type="text/javascript" src="./models/chord-model.js"></script>
+    <script type="text/javascript" src="./models/note-model.js"></script>
+    <script type="text/javascript" src="./models/mode-model.js"></script>
+    <script type="text/javascript" src="./models/key-model.js"></script>
+    <script type="text/javascript" src="./models/key-mode-model.js"></script>
+    <script type="text/javascript" src="./app.js"></script>
+    <script type="text/javascript" src="./music-theory-templates.js"></script>
+    <!-- endinject -->
+  </body>
+</html>

@@ -56,6 +56,13 @@ angular
     },
     {
       name: {
+        full: '5',
+        quality: '5'
+      },
+      steps: [7]
+    },
+    {
+      name: {
         full: 'Major 7th',
         quality: 'maj',
         seventh: '7'

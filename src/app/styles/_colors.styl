@@ -4,4 +4,6 @@ $red = #EA526F;
 $light-blue = #23B5D3;
 $blue = #279AF1;
 $black = #111111;
-$grey = $white - $black;
+$grey = lightness($black, 50%);
+$light-grey = lightness($grey, 75%);
+$lighter-grey = lightness($grey, 85%);

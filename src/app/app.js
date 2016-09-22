@@ -7,6 +7,8 @@ angular.module('musicTheory', [
   'musicTheory.widget',
   'musicTheory.models',
   'canvaskeyboard',
+  'canvasguitar',
+  'visualblock',
   'videolist',
   'chordSelector',
   'ngMaterial'

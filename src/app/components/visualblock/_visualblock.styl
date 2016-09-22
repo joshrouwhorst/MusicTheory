@@ -1,0 +1,30 @@
+.visual-block {
+    .tabs {
+        a {
+            padding: 5px;
+            background-color: $white;
+            border-top: 1px solid $blue;
+            border-right: 1px solid $blue;
+            border-left: 1px solid $blue;
+            text-align: center;
+            display: block;
+            color: $blue;
+            font-weight: bold;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+
+            &.selected {
+                background-color: $blue;
+                color: $white;
+            }
+        }
+
+        a, a:hover, a:active {
+            text-decoration: none;
+        }
+    }
+
+    .visuals {
+        border-top: 2px solid $blue;
+    }
+}

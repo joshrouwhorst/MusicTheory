@@ -3,7 +3,8 @@ angular
 .controller('ChordCtrl', ['$scope', '$routeParams', '$location', 'KeyService', function($scope, $routeParams, $location, KeyService) {
   'use strict';
   var chords = KeyService.chords;
-  var keyboard;
+  var visualblock;
+  var guitar;
   var rows = [];
   var videos = [
       {
@@ -46,9 +47,9 @@ angular
     }
   }
 
-  function keyboardAdded(kb) {
-    keyboard = kb;
-    kb.options.octaves = 2;
+  function visualBlockAdded(vb) {
+    visualblock = vb;
+    visualblock.updateOptions({ octaves: 2 })
     getChordFromParam();
   }
 
@@ -65,13 +66,13 @@ angular
   $scope.$root.$on('$locationChangeSuccess', getChordFromParam);
 
   function updateView(chord) {
-    if (chord === null || !keyboard) {
+    if (chord === null || !visualblock) {
       return;
     }
 
     $scope.showcaseChord = chord;
 
-    keyboard.options.alterKeys = [];
+    var vbNotes = [];
 
     for (var i = 0; i < chord.notes.length; i++) {
       var note = chord.notes[i];
@@ -84,8 +85,10 @@ angular
         obj.highlightColor = '#279AF1';
       }
 
-      keyboard.options.alterKeys.push(obj);
+      vbNotes.push(obj);
     }
+
+    visualblock.updateOptions({notes: vbNotes});
 
     rows.length = 0;
 
@@ -123,7 +126,7 @@ angular
   $scope.rows = rows;
   $scope.chords = chords;
   $scope.update = update;
-  $scope.keyboardAdded = keyboardAdded;
+  $scope.visualBlockAdded = visualBlockAdded
   $scope.videos = videos;
   $scope.valueSelector = {};
 }]);

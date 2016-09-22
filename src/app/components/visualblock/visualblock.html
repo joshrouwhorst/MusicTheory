@@ -1,0 +1,18 @@
+<div class="visual-block">
+    <div class="row tabs">
+        <div class="col-xs-4">
+            <a href ng-click="selectedVisual = 'keyboard'" ng-class="{'selected': selectedVisual === 'keyboard'}">Keyboard</a>
+        </div>
+        <div class="col-xs-4">
+            <a href ng-click="selectedVisual = 'guitar'"  ng-class="{'selected': selectedVisual === 'guitar'}">Guitar</a>
+        </div>
+    </div>
+    <div class="visuals">
+        <div ng-show="selectedVisual === 'keyboard'">
+            <canvas-keyboard  />
+        </div>
+        <div ng-show="selectedVisual === 'guitar'">
+            <canvas-guitar  />
+        </div>
+    </div>
+</div>

@@ -3,7 +3,7 @@ angular
 .controller('ModeChartCtrl', ['$scope', '$routeParams', '$timeout', '$location', 'KeyService', function ($scope, $routeParams, $timeout, $location, KeyService) {
     'use strict';
 
-    var keyboard;
+    var visualblock;
     var notes = [];
     var chords = [];
     var videos = [
@@ -20,53 +20,55 @@ angular
     var modes = KeyService.modes;
     var keys = KeyService.keys;
 
-    $scope.keyboardAdded = function (kb) {
-        keyboard = kb;
-        keyboard.options.octaves = 2;
+    $scope.visualBlockAdded = function (vb) {
+        visualblock = vb;
+        visualblock.updateOptions({ octaves: 2 });
         getKeyFromParam();
     };
 
     function getKeyFromParam() {
-      if ($routeParams.id !== undefined) {
-        $timeout(function() {
-          $scope.$apply(function() {
-            var keyMode = KeyService.getKeyMode($routeParams.id);
-            if (keyMode) {
-              $scope.selectedKey = keyMode.key;
-              $scope.selectedMode = keyMode.mode;
-              updateView(keyMode);
-            }
-          });
-        });
-      }
+        if ($routeParams.id !== undefined) {
+            $timeout(function() {
+                $scope.$apply(function() {
+                    var keyMode = KeyService.getKeyMode($routeParams.id);
+                    if (keyMode) {
+                        $scope.selectedKey = keyMode.key;
+                        $scope.selectedMode = keyMode.mode;
+                        updateView(keyMode);
+                    }
+                });
+            });
+        }
     }
 
     $scope.$root.$on('$locationChangeSuccess', getKeyFromParam);
 
     function updateView(mode) {
-      var opts = keyboard.options;
+        if (!visualblock) return;
 
-      opts.alterKeys = [];
+        var vbNotes = [];
 
-      for (var i = 0; i < mode.scale.length; i++) {
-          var obj = {
-              name: mode.scale[i].name,
-              highlight: true,
-              text: (i + 1)
-          };
+        for (var i = 0; i < mode.scale.length; i++) {
+            var obj = {
+                name: mode.scale[i].name,
+                highlight: true,
+                text: (i + 1)
+            };
 
-          if (i === 0) {
-              obj.highlightColor = '#279AF1';
-          }
+            if (i === 0) {
+                obj.highlightColor = '#279AF1';
+            }
 
-          opts.alterKeys.push(obj);
+            vbNotes.push(obj);
 
-          notes.push(mode.scale[i]);
-      }
+            notes.push(mode.scale[i]);
+        }
 
-      for (i = 0; i < mode.chords.length; i++) {
-        chords.push(mode.chords[i]);
-      }
+        visualblock.updateOptions({ notes: vbNotes });
+
+        for (i = 0; i < mode.chords.length; i++) {
+            chords.push(mode.chords[i]);
+        }
     }
 
     function updateKeyboard() {

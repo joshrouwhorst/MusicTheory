@@ -7,7 +7,6 @@ angular
     var chords = [];
     var visualblock;
     var rows = [];
-    var basepath = '/widget/note/';
 
     function visualBlockAdded(vb) {
         visualblock = vb;
@@ -75,7 +74,7 @@ angular
     function update() {
         var note = $scope.selectedNote;
 
-        if (note && $scope.routeParams.id != note.id) {
+        if (note && $scope.routeParams.id !== note.id) {
             $scope.location.search('id', note.id);
         }
     }

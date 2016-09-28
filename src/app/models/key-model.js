@@ -1,16 +1,16 @@
 angular
 .module('musicTheory.models')
 .factory('Key', function () {
-  'use strict';
+    'use strict';
 
-  function Key(root) {
-    this.root = root;
-    this.modes = [];
-  }
+    function Key(root) {
+        this.root = root;
+        this.modes = [];
+    }
 
-  Key.prototype = {
+    Key.prototype = {
 
-  };
+    };
 
-  return Key;
+    return Key;
 });

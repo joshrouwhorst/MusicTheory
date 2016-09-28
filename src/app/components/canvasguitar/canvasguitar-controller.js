@@ -36,7 +36,7 @@ angular
                 setupCommunication();
                 loop();
             });
-        }
+        };
 
 
         var rawNotes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
@@ -55,14 +55,15 @@ angular
                 fretHeight = canvasHeight - bottomSpace,
                 fretZero = sideSpace + 0.5,
                 fretWidth = Math.floor((canvasWidth - sideSpace) / NUM_OF_FRETS),
-                stringHeight = fretHeight / tuning.length;
+                stringHeight = fretHeight / tuning.length,
+                startPointX, startPointY, revI, radius;
 
             ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
             // Draw frets
             for (var i = 0; i < NUM_OF_FRETS; i++) {
-                var startPointX = fretZero;
-                var startPointY = 0.5;
+                startPointX = fretZero;
+                startPointY = 0.5;
 
                 startPointX += Math.round(i * fretWidth);
                 ctx.strokeStyle = options.fretColor;
@@ -71,10 +72,10 @@ angular
             }
 
             // Draw tuning labels
-            for (var i = 0; i < tuning.length; i++) {
-                var revI = tuning.length - i;
-                var startPointX = Math.floor(sideSpace * 0.5);
-                var startPointY = Math.floor((stringHeight * revI) - (stringHeight / 2)) + 7;
+            for (i = 0; i < tuning.length; i++) {
+                revI = tuning.length - i;
+                startPointX = Math.floor(sideSpace * 0.5);
+                startPointY = Math.floor((stringHeight * revI) - (stringHeight / 2)) + 7;
                 ctx.font = options.textFont;
                 ctx.fillStyle = options.blackColor;
                 ctx.textAlign = 'center';
@@ -82,27 +83,27 @@ angular
             }
 
             // Draw fret labels
-            for (var i = 0; i < NUM_OF_FRETS; i++) {
-              var startPointX = sideSpace + fretWidth * i + fretWidth / 2;
-              var startPointY = fretHeight + bottomSpace / 2 + 5;
-              ctx.font = options.fretFont;
-              ctx.fillStyle = options.blackColor;
-              ctx.textAlign = 'center';
-              ctx.fillText((i + 1).toString(), startPointX, startPointY);
+            for (i = 0; i < NUM_OF_FRETS; i++) {
+                startPointX = sideSpace + fretWidth * i + fretWidth / 2;
+                startPointY = fretHeight + bottomSpace / 2 + 5;
+                ctx.font = options.fretFont;
+                ctx.fillStyle = options.blackColor;
+                ctx.textAlign = 'center';
+                ctx.fillText((i + 1).toString(), startPointX, startPointY);
             }
 
             // Draw strings
-            for (var i = 0; i < strings.length; i++) {
-                var revI = tuning.length - i;
+            for (i = 0; i < strings.length; i++) {
+                revI = tuning.length - i;
                 var modifier = 0;
                 ctx.lineWidth = strings.length - i;
 
                 if (ctx.lineWidth % 2 !== 0) {
-                  modifier = 0.5;
+                    modifier = 0.5;
                 }
 
-                var startPointX = fretZero;
-                var startPointY = Math.floor((stringHeight * revI) - (stringHeight / 2)) - modifier;
+                startPointX = fretZero;
+                startPointY = Math.floor((stringHeight * revI) - (stringHeight / 2)) - modifier;
                 ctx.strokeStyle = options.blackColor;
                 ctx.beginPath();
                 ctx.moveTo(startPointX, startPointY);
@@ -111,21 +112,21 @@ angular
             }
 
             // Draw highlight notes
-            for (var i = 0; i < strings.length; i++) {
+            for (i = 0; i < strings.length; i++) {
                 for (var j = 0; j < strings[i].length; j++) {
                     var note = strings[i][j];
                     if (!options.highlightNotes.includes(note.name)) {
                         continue;
                     }
 
-                    var revI = strings.length - i;
+                    revI = strings.length - i;
 
                     if (j === 0) { // Open strings
                         ctx.strokeStyle = options.blackColor;
                         ctx.lineWidth = 1;
-                        var startPointX = Math.floor(fretZero - sideSpace * 0.2);
-                        var startPointY = Math.floor(stringHeight * revI - stringHeight / 2);
-                        var radius = fretWidth / 6;
+                        startPointX = Math.floor(fretZero - sideSpace * 0.2);
+                        startPointY = Math.floor(stringHeight * revI - stringHeight / 2);
+                        radius = fretWidth / 6;
                         ctx.beginPath();
                         ctx.arc(startPointX, startPointY, radius, 0, 2 * Math.PI, false);
                         ctx.stroke();
@@ -133,10 +134,10 @@ angular
                     else { // Fingered strings
                         ctx.strokeStyle = options.highlightColor;
                         ctx.lineWidth = 1;
-                        var startPointX = Math.floor(fretZero + (j - 1) * fretWidth + fretWidth / 2);
-                        var startPointY = Math.floor(stringHeight * revI - stringHeight / 2);
+                        startPointX = Math.floor(fretZero + (j - 1) * fretWidth + fretWidth / 2);
+                        startPointY = Math.floor(stringHeight * revI - stringHeight / 2);
                         //var radius = Math.floor(stringHeight / 3);
-                        var radius = fretWidth / 3;
+                        radius = fretWidth / 3;
                         ctx.beginPath();
                         ctx.arc(startPointX, startPointY, radius, 0, 2 * Math.PI, false);
                         ctx.stroke();
@@ -208,64 +209,64 @@ angular
         }
 
         function tuningSelected() {
-          var newTuning = $scope.tuningSelection.tuning;
+            var newTuning = $scope.tuningSelection.tuning;
 
-          // $scope.string1 = tuning[0];
-          // $scope.string2 = tuning[1];
-          // $scope.string3 = tuning[2];
-          // $scope.string4 = tuning[3];
-          // $scope.string5 = tuning[4];
-          // $scope.string6 = tuning[5];
+            // $scope.string1 = tuning[0];
+            // $scope.string2 = tuning[1];
+            // $scope.string3 = tuning[2];
+            // $scope.string4 = tuning[3];
+            // $scope.string5 = tuning[4];
+            // $scope.string6 = tuning[5];
 
-          for (var i = 0; i < newTuning.length; i++) {
-            var note = null;
-            for (var j = 0; j < $scope.selectNotes.length && !note; j++) {
-              if ($scope.selectNotes[j].name === newTuning[i]) {
-                note = $scope.selectNotes[j];
-              }
+            for (var i = 0; i < newTuning.length; i++) {
+                var note = null;
+                for (var j = 0; j < $scope.selectNotes.length && !note; j++) {
+                    if ($scope.selectNotes[j].name === newTuning[i]) {
+                        note = $scope.selectNotes[j];
+                    }
+                }
+                $scope['string' + (i + 1)] = note;
             }
-            $scope['string' + (i + 1)] = note;
-          }
 
-          updateTuning();
+            updateTuning();
         }
 
         function updateTuning() {
-          options.tuning = [];
+            options.tuning = [];
 
-          for (var i = 0; i < 6; i++) {
-            options.tuning.push($scope['string' + (i + 1)].name);
-          }
+            for (var i = 0; i < 6; i++) {
+                options.tuning.push($scope['string' + (i + 1)].name);
+            }
 
-          setupStrings();
-          draw();
+            setupStrings();
+            draw();
         }
 
         $scope.tunings = [
-          {
-            name: 'Standard',
-            tuning: ['E', 'A', 'D', 'G', 'B', 'E']
-          },
-          {
-            name: 'Drop D',
-            tuning: ['D', 'A', 'D', 'G', 'B', 'E']
-          },
-          {
-            name: 'Half Step Down',
-            tuning: ['D#', 'G#', 'C#', 'F#', 'A#', 'D#']
-          },
-          {
-            name: 'Full Step Down',
-            tuning: ['D', 'G', 'C', 'F', 'A', 'D']
-          },
-          {
-            name: 'Open D',
-            tuning: ['D', 'A', 'D', 'F#', 'A', 'D']
-          },
-          {
-            name: 'Open D Minor',
-            tuning: ['D', 'A', 'D', 'F', 'A', 'D']
-          }
+            {
+                name: 'Standard',
+                tuning: ['E', 'A', 'D', 'G', 'B', 'E']
+            },
+            {
+                name: 'Drop D',
+                tuning: ['D', 'A', 'D', 'G', 'B', 'E']
+            },
+            {
+                name: 'Half Step Down',
+                tuning: ['D#', 'G#', 'C#', 'F#', 'A#', 'D#']
+            },
+            {
+                name: 'Full Step Down',
+                tuning: ['D', 'G', 'C', 'F', 'A', 'D']
+            },
+            {
+                name: 'Open D',
+                tuning: ['D', 'A', 'D', 'F#', 'A', 'D']
+            },
+            {
+                name: 'Open D Minor',
+                tuning: ['D', 'A', 'D', 'F', 'A', 'D']
+            }
         ];
         $scope.tuningSelected = tuningSelected;
         $scope.selectNotes = [];
@@ -273,7 +274,7 @@ angular
         $scope.updateTuning = updateTuning;
 
         for (var i = 0; i < rawNotes.length; i++) {
-          $scope.selectNotes.push({name: rawNotes[i]});
+            $scope.selectNotes.push({name: rawNotes[i]});
         }
     }]
 });

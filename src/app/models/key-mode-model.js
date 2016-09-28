@@ -16,9 +16,9 @@ angular
 
     function getNotesFromMode(keyMode, notes) {
         var noteArr = [keyMode.key.root],
-        rootIdx = notes.indexOf(keyMode.key.root),
-        noteIdx = rootIdx,
-        steps = keyMode.mode.steps;
+            rootIdx = notes.indexOf(keyMode.key.root),
+            noteIdx = rootIdx,
+            steps = keyMode.mode.steps;
 
         for (var i = 0; i < steps.length; i++) {
             noteIdx = rootIdx + steps[i];

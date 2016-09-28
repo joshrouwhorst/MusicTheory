@@ -1,4 +1,4 @@
-<div ng-controller="ModeChartCtrl">
+<div ng-controller="ModeChartCtrl" class="mode-chart">
     <article>
         <section>
             <form>
@@ -42,14 +42,21 @@
             </div>
         </section>
 
-        <section ng-show="selectedMode && selectedKey">
+        <section ng-show="selectedMode && selectedKey" class="chord-list">
             <header>
                 <h3>Chords</h3>
             </header>
-            <div class="row chords">
-                <div ng-repeat="chord in chords" class="col-xs-6">
-                    <a ng-if="chord.link" ng-href="{{chord.link}}" ng-bind-html="chord.formatted.full.htmlSafe()"></a>
+            <div class="panel panel-default spaced-out" ng-repeat="set in chords">
+                <div class="panel-heading">
+                  <h4><a ng-href="{{set.note.link}}" ng-bind-html="set.root.name.htmlSafe()"></a></h4>
                 </div>
+                <table class="table table-striped">
+                  <tr ng-repeat="row in set.rows">
+                    <td ng-repeat="chord in row track by $index">
+                      <a ng-if="chord.link" ng-href="{{chord.link}}" ng-bind-html="chord.formatted.full.htmlSafe()"></a>
+                    </td>
+                  </tr>
+                </table>
             </div>
         </section>
 

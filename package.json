@@ -6,6 +6,7 @@
     "start": "gulp watch",
     "test": "gulp test"
   },
+  "stylintrc": ".stylintrc",
   "dependencies": {},
   "devDependencies": {
     "event-stream": "^3.1.5",
@@ -15,6 +16,7 @@
     "gulp-concat": "^2.2.0",
     "gulp-csslint": "~0.1.4",
     "gulp-embedlr": "~0.5.2",
+    "gulp-eslint": "^3.0.1",
     "gulp-header": "^1.0.2",
     "gulp-htmlmin": "~0.1.2",
     "gulp-inject": "^1.0.1",
@@ -27,6 +29,8 @@
     "gulp-ng-html2js": "~0.1.7",
     "gulp-rename": "^1.2.0",
     "gulp-serve": "~0.2.0",
+    "gulp-shell": "^0.5.2",
+    "gulp-stylint": "^3.0.0",
     "gulp-stylus": "^1.0.2",
     "gulp-uglify": "~0.3.0",
     "gulp-util": "^2.2.14",

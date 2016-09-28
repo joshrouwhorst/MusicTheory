@@ -44,7 +44,7 @@ angular
     $scope.$root.$on('$locationChangeSuccess', getKeyFromParam);
 
     function updateView(mode) {
-        if (!visualblock) return;
+        if (!visualblock) { return; }
 
         var vbNotes = [];
 
@@ -77,7 +77,7 @@ angular
         notes.length = 0;
         chords.length = 0;
 
-        if (!key || !mode || !keyboard) {
+        if (!key || !mode || !visualblock) {
             return false;
         }
 

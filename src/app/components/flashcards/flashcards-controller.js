@@ -1,6 +1,6 @@
 angular
 .module('musicTheory.widget')
-.controller('FlashCardsCtrl', ['$scope', 'KeyService', function ($scope, KeyService) {
+.controller('FlashCardsCtrl', ['$scope', function ($scope) {
     'use strict';
     var options = [
         {

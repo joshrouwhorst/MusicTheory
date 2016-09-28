@@ -2,7 +2,8 @@ angular
 .module('visualblock', [])
 .component('visualBlock', {
     templateUrl: './components/visualblock/visualblock.html',
-    controller: ['$scope', '$attrs', function($scope, $attrs) {
+    controller: ['$scope', function($scope) {
+        'use strict';
         var keyboard,
             guitar,
             options = {
@@ -24,13 +25,13 @@ angular
         }
 
         function updateKeyboard() {
-            if (!keyboard) return;
+            if (!keyboard) { return; }
             keyboard.options.octaves = options.octaves;
             keyboard.options.alterKeys = options.notes;
         }
 
         function updateGuitar() {
-            if (!guitar) return;
+            if (!guitar) { return; }
             guitar.options.highlightNotes = [];
             for (var i = 0; i < options.notes.length; i++) {
                 guitar.options.highlightNotes.push(options.notes[i].name);

@@ -46,6 +46,9 @@ angular
     function updateView(mode) {
         if (!visualblock) { return; }
 
+        notes.length = 0;
+        chords.length = 0;
+
         var vbNotes = [];
 
         for (var i = 0; i < mode.scale.length; i++) {
@@ -66,16 +69,41 @@ angular
 
         visualblock.updateOptions({ notes: vbNotes });
 
+        var keyedRows = {};
+        var rowSize = 2;
+
         for (i = 0; i < mode.chords.length; i++) {
-            chords.push(mode.chords[i]);
+            var root = mode.chords[i].root.name;
+            if (!keyedRows[root]) {
+                keyedRows[root] = [[]];
+                chords.push({
+                    root: mode.chords[i].root,
+                    rows: keyedRows[root]
+                });
+            }
+
+            var idx = keyedRows[root].length - 1;
+            if (keyedRows[root][idx].length === rowSize) {
+                keyedRows[root].push([]);
+                idx++;
+            }
+
+            keyedRows[root][idx].push(mode.chords[i]);
+        }
+
+        // Fill half empty rows
+        for (i = 0; i < chords.length; i++) {
+            var arr = chords[i].rows[chords[i].rows.length - 1];
+            var missing = rowSize - arr.length;
+            for (var j = 0; j < missing; j++) {
+                arr.push({});
+            }
         }
     }
 
     function updateKeyboard() {
         var key = $scope.selectedKey;
         var mode = $scope.selectedMode;
-        notes.length = 0;
-        chords.length = 0;
 
         if (!key || !mode || !visualblock) {
             return false;

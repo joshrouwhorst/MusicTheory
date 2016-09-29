@@ -1,6 +1,59 @@
-body
-    background: $white
+html
+    background-color: $white
+
+    body
+        background-color: transparent
+
+div.container
     margin-bottom: 20px
+
+.music-theory
+    a.list-group-item
+        background-color: transparent
+        border: 1px solid $black
+        color: $black
+        text-align: center
+
+        &:hover
+            background-color: $black
+            color: $white
+            font-weight: bold
+
+    .form-control
+        border: 1px solid $light-grey
+        -webkit-box-shadow: none // @stylint ignore
+        box-shadow: none
+        color: black
+
+    .panel-default
+        border-color: $light-grey
+        &>.panel-heading
+            background-color: $nearly-white
+            border-color: $light-grey
+
+    table
+        &>tbody
+            &>tr
+                &>td
+                    border-bottom: 1px solid $light-grey
+                    border-top: 1px solid $light-grey
+
+    .table-striped>tbody>tr, .table-striped>tbody>tr:nth-of-type(odd)
+        background-color: $white
+    .panel
+        .table-striped>tbody>tr, .table-striped>tbody>tr:nth-of-type(odd)
+            background-color: $nearly-white
+
+    .btn
+        font-weight: bold
+
+    .btn-primary
+        background-color: $blue
+        border-color: $blue
+        &:active, &:hover
+            background-color: $light-blue
+        &:active:hover
+            background-color: $blue
 
 input,
 textarea,

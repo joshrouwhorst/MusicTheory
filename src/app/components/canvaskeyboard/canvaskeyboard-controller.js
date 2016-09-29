@@ -27,8 +27,8 @@ angular
                 options = {
                     octaves: 1,
                     alterKeys: [],
-                    highlightColor: '#23B5D3',
-                    textColor: '#EA526F',
+                    highlightColor: '#bfbfbf',
+                    textColor: '#111111',
                     textFont: '15pt Arial',
                     updateSpeed: 500,
                     blackColor: '#111111'

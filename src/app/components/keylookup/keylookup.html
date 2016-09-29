@@ -46,12 +46,23 @@
       <header>
         <h3>Keys</h3>
       </header>
-      <div ng-show="rows.length > 0">
+      <!-- <div ng-show="rows.length > 0">
         <div class="row" ng-repeat="row in rows">
           <div class="col-xs-3" ng-repeat="km in row track by $index">
             <a ng-href="{{km.link}}">{{km.key.root.name}} {{km.mode.name}}</a>
           </div>
         </div>
+      </div> -->
+      <div ng-show="rows.length > 0">
+        <table class="table">
+            <tbody>
+                <tr ng-repeat="row in rows">
+                    <td ng-repeat="km in row track by $index">
+                        <a ng-href="{{km.link}}">{{km.name}}</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
       </div>
       <div class="row" ng-show="noneFound">
         <div class="col-xs-12">

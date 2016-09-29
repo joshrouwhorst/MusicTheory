@@ -22,9 +22,9 @@ angular
                 options = {
                     highlightNotes: [],
                     fretColor: '#AAAAAA',
-                    highlightColor: '#23B5D3',
-                    textColor: '#EA526F',
-                    textFont: '15pt Arial',
+                    highlightColor: '#bfbfbf',
+                    textColor: '#111111',
+                    textFont: '12pt Arial',
                     fretFont: '10pt Arial',
                     updateSpeed: 500,
                     blackColor: '#111111'

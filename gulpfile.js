@@ -145,6 +145,11 @@ gulp.task('assets', function () {
     .pipe(gulp.dest('./dist/assets'));
 });
 
+gulp.task('fonts', function () {
+    return gulp.src('./src/app/fonts/**')
+    .pipe(gulp.dest('./dist/fonts'));
+});
+
 gulp.task('htmls', function () {
     return gulp.src('./src/app/**/*.html')
     .pipe(gulp.dest('./dist/'));
@@ -165,7 +170,7 @@ function addDot(filepath) {
 /**
 * Dist
 */
-gulp.task('dist', ['vendors', 'assets', 'htmls', 'styles-dist', 'scripts-dist'], function () {
+gulp.task('dist', ['vendors', 'assets', 'fonts', 'htmls', 'styles-dist', 'scripts-dist'], function () {
     return gulp.src('./src/app/index.html')
     .pipe(g.inject(gulp.src('./dist/vendors.min.{js,css}'), {ignorePath: 'dist', starttag: '<!-- inject:vendor:{{ext}} -->', transform: addDot}))
     .pipe(g.inject(gulp.src('./dist/' + bower.name + '.min.{js,css}'), {ignorePath: 'dist', transform: addDot}))

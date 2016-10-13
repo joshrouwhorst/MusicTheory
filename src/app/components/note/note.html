@@ -3,8 +3,11 @@
     <section>
       <header>
         <div class="row">
-          <div class="col-xs-12 col-sm-6" ng-show="selectedNote">
+          <div class="col-xs-6 col-sm-4" ng-show="selectedNote">
             <h1>{{selectedNote.name}}</h1>
+          </div>
+          <div class="col-xs-6 col-sm-2" ng-show="selectedNote">
+              <h1><small><a href ng-click="playNote()" class="glyphicon glyphicon-volume-up" title="Listen"></a></small></h1>
           </div>
           <div class="col-xs-12 col-sm-6">
             <div class="form-group">

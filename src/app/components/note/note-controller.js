@@ -1,12 +1,20 @@
 angular
 .module('musicTheory.widget')
-.controller('NoteCtrl', ['$scope', '$routeParams', '$location', '$timeout', 'KeyService', function ($scope, $routeParams, $location, $timeout, KeyService) {
+.controller('NoteCtrl', ['$scope', '$routeParams', '$location', '$timeout', 'KeyService', 'AudioService', function ($scope, $routeParams, $location, $timeout, KeyService, AudioService) {
     'use strict';
 
     var notes = KeyService.notes;
     var chords = [];
     var visualblock;
     var rows = [];
+
+    function playNote() {
+        if (!$scope.selectedNote) {
+            return;
+        }
+
+        AudioService.playNote($scope.selectedNote.name + '4');
+    }
 
     function visualBlockAdded(vb) {
         visualblock = vb;
@@ -79,6 +87,7 @@ angular
         }
     }
 
+    $scope.playNote = playNote;
     $scope.routeParams = $routeParams;
     $scope.location = $location;
     $scope.rows = rows;

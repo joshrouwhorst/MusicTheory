@@ -1,6 +1,6 @@
 angular
 .module('musicTheory.widget')
-.controller('ChordCtrl', ['$scope', '$routeParams', '$location', 'KeyService', function($scope, $routeParams, $location, KeyService) {
+.controller('ChordCtrl', ['$scope', '$routeParams', '$location', 'KeyService', 'AudioService', function($scope, $routeParams, $location, KeyService, AudioService) {
     'use strict';
     var chords = KeyService.chords;
     var visualblock;
@@ -31,6 +31,11 @@ angular
             link: 'https://www.youtube.com/watch?v=oQsxM5LPrwc'
         }
     ];
+
+    function playChord() {
+        if (!$scope.showcaseChord) return
+        AudioService.playChord($scope.showcaseChord);
+    }
 
     function getSelectedChord() {
         // var i = parseInt($scope.selectedChord, 10);
@@ -121,6 +126,7 @@ angular
         }
     }
 
+    $scope.playChord = playChord;
     $scope.location = $location;
     $scope.rows = rows;
     $scope.chords = chords;

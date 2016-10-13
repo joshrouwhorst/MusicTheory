@@ -1,6 +1,10 @@
 Music Theory
 ============
 
+## Application
+
+To see this application in action check it out [here](http://musictheory.joshrouwhorst.com).
+
 ## Development
 
 To start developing in the project run:

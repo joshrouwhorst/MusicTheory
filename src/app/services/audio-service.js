@@ -4,9 +4,10 @@ angular
     'use strict';
 
     var _this = this;
+    var DEFAULT_OCTAVE = 4;
 
     this.playChord = function (chord, octave) {
-        var lastNote, note, oct = octave || 4;
+        var lastNote, note, oct = octave || DEFAULT_OCTAVE;
 
         for (var i = 0; i < chord.notes.length; i++) {
             note = chord.notes[i];
@@ -20,7 +21,7 @@ angular
     };
 
     this.playNote = function (note, octave) {
-        var oct = octave || 4;
+        var oct = octave || DEFAULT_OCTAVE;
         return createTone(note.name + oct);
     };
 
@@ -34,9 +35,10 @@ angular
         tone.play({
             pitch: pitch,
             label: pitch,
+            volume: 0.5,
             env: {
-                decay: 1.5,
-                release: 0.1
+                decay: 1,
+                release: 1
             }
         });
 

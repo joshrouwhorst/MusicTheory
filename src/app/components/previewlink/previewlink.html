@@ -1,0 +1,4 @@
+<div class="preview-link" ng-mouseover="open(this)" ng-mouseleave="close(this)">
+    <a ng-href="{{link}}" ng-bind-html="name.htmlSafe()" class="link"></a>
+    <ng-include src="'/components/previewlink/popup.html'" onload="imHere()" class="preview-window-box" />
+</div>

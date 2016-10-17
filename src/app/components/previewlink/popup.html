@@ -1,0 +1,15 @@
+<div class="preview-window" ng-class="['preview-window', {'notes': chord !== undefined}]">
+    <div class="preview-arrow">
+        <i class="glyphicon glyphicon-triangle-top"></i>
+    </div>
+    <div class="preview-container">
+        <div>
+            <a href ng-click="playPreview()" class="glyphicon glyphicon-volume-up playtone" title="Listen"></a>
+        </div>
+        <div ng-if="chord" class="row">
+            <div class="col-xs-3" ng-repeat="note in chord.notes">
+                <a ng-href="{{note.link}}">{{note.name}}</a>
+            </div>
+        </div>
+    </div>
+</div>

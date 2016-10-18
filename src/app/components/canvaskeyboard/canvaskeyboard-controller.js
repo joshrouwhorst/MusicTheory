@@ -108,7 +108,10 @@ angular
             for (var i = 0; i < options.alterKeys.length; i++) {
                 var textKey = options.alterKeys[i];
                 if (textKey.text && textKey.name.toLowerCase() === key.name.toLowerCase() && (options.octaves === 1 || !textKey.octave || textKey.octave === key.octave)) {
-                    return textKey.text;
+                    return {
+                        text: textKey.text,
+                        textColor: textKey.textColor
+                    };
                 }
             }
 
@@ -151,9 +154,9 @@ angular
 
                 if (text) {
                     ctx.font = options.textFont;
-                    ctx.fillStyle = options.textColor;
+                    ctx.fillStyle = text.textColor || options.textColor;
                     ctx.textAlign = 'center';
-                    ctx.fillText(text, startPointX + (whiteKeyWidth / 2), Math.round(whiteKeyHeight * 0.75));
+                    ctx.fillText(text.text, startPointX + (whiteKeyWidth / 2), Math.round(whiteKeyHeight * 0.75));
                 }
 
                 whiteKeysSoFar++;
@@ -192,9 +195,9 @@ angular
 
                 if (text) {
                     ctx.font = options.textFont;
-                    ctx.fillStyle = options.textColor;
+                    ctx.fillStyle = text.textColor || options.textColor;
                     ctx.textAlign = 'center';
-                    ctx.fillText(text, startPointX + (blackKeyWidth / 2), Math.round(blackKeyHeight * 0.75));
+                    ctx.fillText(text.text, startPointX + (blackKeyWidth / 2), Math.round(blackKeyHeight * 0.75));
                 }
             }
         }

@@ -33,7 +33,7 @@ angular
     ];
 
     function playChord() {
-        if (!$scope.showcaseChord) return
+        if (!$scope.showcaseChord) { return; }
         AudioService.playChord($scope.showcaseChord);
     }
 

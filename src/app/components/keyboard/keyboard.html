@@ -1,0 +1,45 @@
+<div ng-controller="KeyboardCtrl">
+    <div class="row">
+        <div class="col-xs-12 col-sm-3">
+            <div class="form-group">
+                <label for="key">Key</label>
+                <select ng-options="key.name for key in keys" ng-model="selectedKey" ng-change="setOptions()" id="key" class="form-control"></select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <div class="form-group">
+                <label for="mode">Mode</label>
+                <select ng-options="mode.name for mode in modes" ng-model="selectedMode"  ng-change="setOptions()" id="mode" class="form-control"></select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <div class="form-inline">
+                <div class="form-group">
+                    <label for="limit">
+                        Limit to Key
+                    </label>
+                    <input type="checkbox" ng-model="limitToKey" id="limit" class="form-control" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row clickable" ng-keydown="keydown($event)" ng-keyup="keyup($event)" tabindex="0">
+        <div class="col-xs-12">
+            <div class="bg bg-warning">Nothing happening? Click the keyboard and try again!</div>
+            <canvas-keyboard />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <p>
+                Welcome to the Keyboard. This is meant as a little practice keyboard to play around with when you don't have a piano nearby.
+            </p>
+            <p>
+                To use this, you need to click on the keyboard above and then use the keys on your computer keyboard to play notes. You can select a key and mode to view a scale. You can select 'Limit to Key' to only let notes get played within that scale.
+            </p>
+            <p class="bg bg-warning">
+                Sorry mobile users, this only works for desktops/laptops right now.
+            </p>
+        </div>
+    </div>
+</div>

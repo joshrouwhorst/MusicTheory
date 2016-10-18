@@ -7,7 +7,7 @@
                         <h1 ng-bind-html="showcaseChord.formatted.full.htmlSafe()"></h1>
                     </div>
                     <div class="col-xs-6 col-sm-2" ng-show="showcaseChord">
-                        <h1><small><a href ng-click="playChord()" class="glyphicon glyphicon-volume-up" title="Listen"></a></small></h1>
+                        <h1><small><a href ng-click="playChord()" class="glyphicon glyphicon-volume-up playtone" title="Listen"></a></small></h1>
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <div class="form-group">
@@ -31,7 +31,8 @@
         </header>
         <div class="row">
             <div class="col-xs-3" ng-repeat="note in showcaseChord.notes">
-                <a ng-href="{{note.link}}">{{note.name}}</a>
+                <!-- <a ng-href="{{note.link}}">{{note.name}}</a> -->
+                <preview-link note="note"></preview-link>
             </div>
         </div>
     </section>

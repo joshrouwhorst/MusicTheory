@@ -11,6 +11,7 @@ angular.module('musicTheory', [
     'visualblock',
     'videolist',
     'chordSelector',
+    'previewLink',
     'ngMaterial'
 ])
 .config(function ($routeProvider) {

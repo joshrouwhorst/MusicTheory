@@ -7,14 +7,16 @@ angular
         chord: '='
     },
     controller: ['$scope', '$element', 'AudioService', function ($scope, $element, AudioService) {
+        'use strict';
+
         var ctrl = $scope.$ctrl;
         var note, chord, previewWindow;
 
-        $scope.open = function (caller) {
+        $scope.open = function () {
             previewWindow.addClass('active');
         };
 
-        $scope.close = function (caller) {
+        $scope.close = function () {
             previewWindow.removeClass('active');
         };
 
@@ -46,7 +48,7 @@ angular
             $scope.link = chord.link;
         }
         else {
-            throw "Need to provide a note or chord to preview links";
+            throw 'Need to provide a note or chord to preview links';
         }
     }]
 });

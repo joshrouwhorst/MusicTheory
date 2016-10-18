@@ -272,6 +272,16 @@ angular
         return keyModes[id];
     };
 
+    this.getKeyModeFromRootMode = function (root, mode) {
+        for (var i = 0; i < keyModes.length; i++) {
+            if (keyModes[i].key.root === root && keyModes[i].mode === mode) {
+                return keyModes[i];
+            }
+        }
+
+        return null;
+    };
+
     function isChordInKey(chord, keyMode) {
         for (var i = 0; i < chord.notes.length; i++) {
             if (!keyMode.scale.includes(chord.notes[i])) {

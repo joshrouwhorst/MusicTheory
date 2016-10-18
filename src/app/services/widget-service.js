@@ -22,6 +22,10 @@ angular
         {
             name: 'Random Chord',
             path: '/widget/randomchord'
+        },
+        {
+            name: 'Keyboard',
+            path: '/widget/keyboard'
         }
         // ,
         // {

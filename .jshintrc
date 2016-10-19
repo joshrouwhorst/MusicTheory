@@ -17,6 +17,7 @@
     "smarttabs": true,
     "globals": {
         "angular": false,
-        "Wad": false
+        "Wad": false,
+        "ga": false
     }
 }

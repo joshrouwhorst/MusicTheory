@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html ng-app="musicTheory">
-  <head>
+<head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Theory</title>
 
     <link rel="icon" type="image/png" href="./assets/imgs/notes.ico">
-      
+
     <!-- inject:vendor:css -->
     <link type="text/css" rel="stylesheet" href="./angular-material/angular-material.css" />
     <!-- endinject -->
@@ -17,16 +17,16 @@
     <link type="text/css" rel="stylesheet" href="./css/components/keylookup/keylookup.css" />
     <link type="text/css" rel="stylesheet" href="./css/components/randomchord/randomchord.css" />
     <!-- endinject -->
-  </head>
-  <body class="music-theory">
+</head>
+<body class="music-theory">
 
     <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-          <music-header></music-header>
-          <ng-view></ng-view>
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                <music-header></music-header>
+                <ng-view></ng-view>
+            </div>
         </div>
-      </div>
     </div>
     <!-- inject:vendor:js -->
     <script type="text/javascript" src="./angular/angular.js"></script>
@@ -66,5 +66,16 @@
     <script type="text/javascript" src="./app.js"></script>
     <script type="text/javascript" src="./music-theory-templates.js"></script>
     <!-- endinject -->
-  </body>
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-85963778-2', 'auto');
+    ga('send', 'pageview');
+
+    </script>
+</body>
 </html>

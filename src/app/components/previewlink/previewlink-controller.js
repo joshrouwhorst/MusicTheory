@@ -36,19 +36,21 @@ angular
             previewWindow = angular.element(windowRaw);
         };
 
-        if (ctrl.note) {
+        if (ctrl.note && ctrl.note.name) {
             note = ctrl.note;
             $scope.name = note.name;
             $scope.link = note.link;
+            $scope.noneProvided = false;
         }
-        else if (ctrl.chord) {
+        else if (ctrl.chord && ctrl.chord.formatted) {
             chord = ctrl.chord;
             $scope.chord = chord;
             $scope.name = chord.formatted.full;
             $scope.link = chord.link;
+            $scope.noneProvided = false;
         }
         else {
-            throw 'Need to provide a note or chord to preview links';
+            $scope.noneProvided = true;
         }
     }]
 });

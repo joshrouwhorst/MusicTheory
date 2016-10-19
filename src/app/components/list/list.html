@@ -1,3 +1,7 @@
-<div class="list-group">
-  <a ng-repeat="widget in widgets track by $index" href="#{{widget.path}}" class="list-group-item">{{widget.name}}</a>
+<div class="list-view">
+    <div class="row" ng-repeat="row in rows">
+        <div class="col-xs-6 widget text-center" ng-repeat="widget in row">
+            <a href="#{{widget.path}}">{{widget.name}}</a>
+        </div>
+    </div>
 </div>

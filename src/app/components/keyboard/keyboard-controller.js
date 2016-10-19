@@ -64,62 +64,50 @@ angular
         ],
         notes = [
             {
-                octave: 1,
                 name: 'C',
                 text: 'A'
             },
             {
-                octave: 1,
                 name: 'C#',
                 text: 'W'
             },
             {
-                octave: 1,
                 name: 'D',
                 text: 'S'
             },
             {
-                octave: 1,
                 name: 'D#',
                 text: 'E'
             },
             {
-                octave: 1,
                 name: 'E',
                 text: 'D'
             },
             {
-                octave: 1,
                 name: 'F',
                 text: 'F'
             },
             {
-                octave: 1,
                 name: 'F#',
                 text: 'T'
             },
             {
-                octave: 1,
                 name: 'G',
                 text: 'G'
             },
             {
-                octave: 1,
                 name: 'G#',
                 text: 'Y'
             },
             {
-                octave: 1,
                 name: 'A',
                 text: 'H'
             },
             {
-                octave: 1,
                 name: 'A#',
                 text: 'U'
             },
             {
-                octave: 1,
                 name: 'B',
                 text: 'J'
             }
@@ -158,6 +146,8 @@ angular
                 if (note && !pressedKeys.includes(note)) {
                     pressedKeys.push(note);
                     note.tone = AudioService.playNote(note.noteObj);
+                    note.tone2 = AudioService.playNote(note.noteObj, 5);
+                    // note.tone3 = AudioService.playNote(note.noteObj, 3);
                 }
 
                 break;
@@ -185,6 +175,8 @@ angular
                     var idx = pressedKeys.indexOf(note);
                     pressedKeys.splice(idx, 1);
                     if (note.tone) { AudioService.stopNote(note.tone); }
+                    if (note.tone2) { AudioService.stopNote(note.tone2); }
+                    // if (note.tone3) { AudioService.stopNote(note.tone3); }
                     note.tone = null;
                 }
 

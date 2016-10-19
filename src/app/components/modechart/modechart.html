@@ -37,7 +37,7 @@
             </header>
             <div class="row notes">
                 <div ng-repeat="note in notes" class="col-xs-1">
-                    <a ng-href="{{note.link}}">{{note.name}}</a>
+                    <preview-link note="note" />
                 </div>
             </div>
         </section>

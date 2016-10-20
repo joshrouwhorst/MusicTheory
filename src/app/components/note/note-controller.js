@@ -13,7 +13,7 @@ angular
             return;
         }
 
-        AudioService.playNote($scope.selectedNote.name + '4');
+        AudioService.playNote($scope.selectedNote);
     }
 
     function visualBlockAdded(vb) {

@@ -5,6 +5,7 @@ angular
 
     var _this = this;
     var DEFAULT_OCTAVE = 4;
+    var DEFAULT_VOLUME = 0.2;
 
     this.playChord = function (chord, octave) {
         var lastNote, note, oct = octave || DEFAULT_OCTAVE;
@@ -20,22 +21,26 @@ angular
         }
     };
 
-    this.playNote = function (note, octave) {
+    this.playNote = function (note, octave, volumePercent) {
         var oct = octave || DEFAULT_OCTAVE;
-        return createTone(note.name + oct);
+        return createTone(note.name + oct, null, volumePercent);
     };
 
     this.stopNote = function (tone) {
         tone.stop();
     };
 
-    function createTone(pitch, duration) {
+    function createTone(pitch, duration, volumePercent) {
         var tone = new Wad(Wad.presets.piano);
+
+        if (volumePercent === undefined) {
+            volumePercent = 1;
+        }
 
         tone.play({
             pitch: pitch,
             label: pitch,
-            volume: 0.5,
+            volume: DEFAULT_VOLUME * volumePercent,
             env: {
                 decay: 1,
                 release: 1

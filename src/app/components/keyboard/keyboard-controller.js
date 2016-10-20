@@ -145,9 +145,8 @@ angular
 
                 if (note && !pressedKeys.includes(note)) {
                     pressedKeys.push(note);
-                    note.tone = AudioService.playNote(note.noteObj);
-                    note.tone2 = AudioService.playNote(note.noteObj, 5);
-                    // note.tone3 = AudioService.playNote(note.noteObj, 3);
+                    note.tone = AudioService.playNote(note.noteObj, 4, 0.5);
+                    note.tone2 = AudioService.playNote(note.noteObj, 5, 0.5); // Sounds better with two tones
                 }
 
                 break;
@@ -176,7 +175,6 @@ angular
                     pressedKeys.splice(idx, 1);
                     if (note.tone) { AudioService.stopNote(note.tone); }
                     if (note.tone2) { AudioService.stopNote(note.tone2); }
-                    // if (note.tone3) { AudioService.stopNote(note.tone3); }
                     note.tone = null;
                 }
 
